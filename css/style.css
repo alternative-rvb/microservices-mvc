@@ -1,0 +1,289 @@
+:root {
+    --bs-custom-primary: rgba(103, 86, 140, 1);
+    --bs-custom-secondary: #d9376e;
+    --bs-custom-secondary: rgba(217, 55, 110, 1);
+    --bs-custom-dark: rgba(31, 18, 53, 1);
+}
+
+body {
+
+    background-color: #f4effc;
+}
+
+main {
+    min-height: 84vh !important;
+    /* padding: 4rem inherit !important; */
+}
+
+.art__body {
+    background-color: #e2daeb;
+}
+
+article img {
+    aspect-ratio: 16/9;
+    object-fit: cover;
+
+}
+
+.btn {
+    min-width: 8rem;
+}
+
+h1 {
+    font-weight: 900;
+    font-size: clamp(2rem, 5vw, 3rem);
+}
+
+/* Classes pour les couleurs d'arrière-plan personnalisées */
+.bg-custom-primary {
+    background-color: var(--bs-custom-primary) !important;
+}
+
+.bg-custom-secondary {
+    background-color: var(--bs-custom-secondary) !important;
+}
+
+.bg-custom-dark {
+    background-color: var(--bs-custom-dark) !important;
+}
+
+/* Classes pour les couleurs de texte personnalisées */
+.text-custom-primary {
+    color: var(--bs-custom-primary) !important;
+}
+
+.text-custom-secondary {
+    color: var(--bs-custom-secondary) !important;
+}
+
+.text-custom-dark {
+    color: var(--bs-custom-dark) !important;
+}
+
+/* Classes pour les couleurs de bordure personnalisées */
+.border-custom-primary {
+    border-color: var(--bs-custom-primary) !important;
+}
+
+.border-custom-secondary {
+    border-color: var(--bs-custom-secondary) !important;
+}
+
+.border-custom-dark {
+    border-color: var(--bs-custom-dark) !important;
+}
+
+/* Classes pour les boutons personnalisés */
+.btn-custom-primary {
+    background-color: var(--bs-custom-primary) !important;
+    color: white !important;
+    border-color: var(--bs-custom-primary) !important;
+}
+
+.btn-custom-secondary {
+    background-color: var(--bs-custom-secondary) !important;
+    color: white !important;
+    border-color: var(--bs-custom-secondary) !important;
+}
+
+.btn-custom-dark {
+    background-color: var(--bs-custom-dark) !important;
+    color: white !important;
+    border-color: var(--bs-custom-dark) !important;
+}
+
+/* Classes pour les boutons personnalisés lorsqu'ils sont survolés, actifs ou focus */
+.btn-custom-primary:hover,
+.btn-custom-primary:focus,
+.btn-custom-primary:active {
+    background-color: rgba(103, 86, 140, 0.8) !important;
+    border-color: rgba(103, 86, 140, 0.8) !important;
+}
+
+
+.btn-custom-secondary:hover,
+.btn-custom-secondary:focus,
+.btn-custom-secondary:active {
+    background-color: rgba(217, 55, 110, 0.8) !important;
+    border-color: rgba(217, 55, 110, 0.8) !important;
+}
+
+.btn-custom-dark:hover,
+.btn-custom-dark:focus,
+.btn-custom-dark:active {
+    background-color: rgba(31, 18, 53, 0.8) !important;
+    border-color: rgba(31, 18, 53, 0.8) !important;
+}
+
+/* Classes pour les liens personnalisés */
+.link-custom-primary {
+    color: var(--bs-custom-primary) !important;
+}
+
+.link-custom-secondary {
+    color: var(--bs-custom-secondary) !important;
+}
+
+.link-custom-dark {
+    color: var(--bs-custom-dark) !important;
+}
+
+/* Classes pour les liens personnalisés lorsqu'ils sont survolés ou focus */
+.link-custom-primary:hover,
+.link-custom-primary:focus {
+    color: rgba(103, 86, 140, 0.8) !important;
+}
+
+.link-custom-secondary:hover,
+.link-custom-secondary:focus {
+    color: rgba(217, 55, 110, 0.8) !important;
+}
+
+.link-custom-dark:hover,
+.link-custom-dark:focus {
+    color: rgba(13, 13, 13, 0.8) !important;
+}
+
+/* Classes pour les menus déroulants personnalisés */
+.dropdown-menu-custom-primary {
+    background-color: var(--bs-custom-primary) !important;
+}
+
+.dropdown-menu-custom-secondary {
+    background-color: var(--bs-custom-secondary) !important;
+}
+
+.dropdown-menu-custom-dark {
+    background-color: var(--bs-custom-dark) !important;
+}
+
+.dropdown-item-custom-primary {
+    color: white !important;
+}
+
+.dropdown-item-custom-secondary {
+    color: white !important;
+}
+
+.dropdown-item-custom-dark {
+    color: white !important;
+}
+
+/* Classes pour les éléments de menu déroulant personnalisés lorsqu'ils sont survolés ou focus */
+.dropdown-item-custom-primary:hover,
+.dropdown-item-custom-primary:focus {
+    background-color: rgba(103, 86, 140, 0.8) !important;
+}
+
+.dropdown-item-custom-secondary:hover,
+.dropdown-item-custom-secondary:focus {
+    background-color: rgba(217, 55, 110, 0.8) !important;
+}
+
+.dropdown-item-custom-dark:hover,
+.dropdown-item-custom-dark:focus {
+    background-color: rgba(13, 13, 13, 0.8) !important;
+}
+
+/* Classes pour les menus déroulants du nav personnalisés */
+.navbar .dropdown-menu-custom-primary {
+    background-color: var(--bs-custom-primary) !important;
+}
+
+.navbar .dropdown-menu-custom-secondary {
+    background-color: var(--bs-custom-secondary) !important;
+}
+
+.navbar .dropdown-menu-custom-dark {
+    background-color: var(--bs-custom-dark) !important;
+}
+
+.navbar .dropdown-item-custom-primary {
+    color: white !important;
+}
+
+.navbar .dropdown-item-custom-secondary {
+    color: white !important;
+}
+
+.navbar .dropdown-item-custom-dark {
+    color: white !important;
+}
+
+/* Classes pour les éléments de menu déroulant du nav personnalisés lorsqu'ils sont survolés ou focus */
+.navbar .dropdown-item-custom-primary:hover,
+.navbar .dropdown-item-custom-primary:focus {
+    background-color: rgba(103, 86, 140, 0.8) !important;
+}
+
+.navbar .dropdown-item-custom-secondary:hover,
+.navbar .dropdown-item-custom-secondary:focus {
+    background-color: rgba(217, 55, 110, 0.8) !important;
+}
+
+.navbar .dropdown-item-custom-dark:hover,
+.navbar .dropdown-item-custom-dark:focus {
+    background-color: rgba(13, 13, 13, 0.8) !important;
+}
+
+/* Classes pour les badges personnalisés */
+.badge-custom-primary {
+    background-color: var(--bs-custom-primary) !important;
+}
+
+.badge-custom-secondary {
+    background-color: var(--bs-custom-secondary) !important;
+}
+
+.badge-custom-dark {
+    background-color: var(--bs-custom-dark) !important;
+}
+
+/* Classes pour les pills personnalisés */
+.nav-pills .nav-link-custom-primary {
+    background-color: var(--bs-custom-primary) !important;
+}
+
+.nav-pills .nav-link-custom-secondary {
+    background-color: var(--bs-custom-secondary) !important;
+}
+
+.nav-pills .nav-link-custom-dark {
+    background-color: var(--bs-custom-dark) !important;
+}
+
+/* Classes pour les pills personnalisés lorsqu'ils sont actifs ou focus */
+.nav-pills .nav-link-custom-primary.active,
+.nav-pills .nav-link-custom-primary:focus {
+    background-color: rgba(103, 86, 140, 0.8) !important;
+}
+
+.nav-pills .nav-link-custom-secondary.active,
+.nav-pills .nav-link-custom-secondary:focus {
+    background-color: rgba(217, 55, 110, 0.8) !important;
+}
+
+.nav-pills .nav-link-custom-dark.active,
+.nav-pills .nav-link-custom-dark:focus {
+    background-color: rgba(13, 13, 13, 0.8) !important;
+}
+
+/* Classes pour les badges avec texte et arrière-plans personnalisés */
+.badge.rounded-pill.text-bg-custom-primary {
+    background-color: var(--bs-custom-primary) !important;
+    color: white !important;
+}
+
+.badge.rounded-pill.text-bg-custom-secondary {
+    background-color: var(--bs-custom-secondary) !important;
+    color: white !important;
+}
+
+.badge.rounded-pill.text-bg-custom-dark {
+    background-color: var(--bs-custom-dark) !important;
+    color: white !important;
+}
+
+.rounded {
+    overflow: hidden;
+}
