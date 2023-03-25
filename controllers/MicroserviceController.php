@@ -60,7 +60,7 @@ class MicroserviceController
         // var_dump($_SESSION);
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $action = $_POST['action'];
-            $id = $_POST['id'];
+            $id = $_SESSION['postID'] = $_POST['id'];
             if ($action != 'DELETE') {
                 $titre = $_SESSION['titre'] = (string)$this->sanitizeMicroserviceInput($_POST['titre']);
                 $contenu = $_SESSION['contenu'] = (string)$this->sanitizeMicroserviceInput($_POST['contenu']);
@@ -83,6 +83,7 @@ class MicroserviceController
                 $image = $_SESSION['image'] = (string)$this->sanitizeMicroserviceInput($this->uploadMicroserviceImage($_FILES['image'], $_POST['old_image']));
 
                 $userID = $_SESSION['userID'] =  (int) $this->sanitizeMicroserviceInput($_POST['userID']);
+                unset($_SESSION['titre'], $_SESSION['contenu'], $_SESSION['prix'], $_SESSION['image'], $_SESSION['postID']);
                 // $_SESSION['Message'] = '<p class="alert alert-success" role="alert">Le microservice a été enregistré avec succès.</p>';
             }
 
