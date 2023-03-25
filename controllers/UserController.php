@@ -29,7 +29,7 @@ class UserController
             } else {
                 $this->UserModel->createUser($nom, $prenom, $email, $password, $role);
                 $_SESSION['Message'] = "Votre compte a été créé avec succès. Veuillez vous connecter.";
-                header('Location: ' . BROWSER_PATH . 'connexion.php');
+                header('Location: ' . BROWSER_PATH . '/connexion.php');
                 exit();
             }
         }
@@ -42,10 +42,10 @@ class UserController
             $password = $_POST['password'];
             $user = $this->UserModel->getUserByEmail($email);
             if ($user) {
-                if ($password && $user['Password'] && password_verify($password, $user['Password']) && $user['Rôle'] == 1) {
+                if ($password && $user['Password'] && password_verify($password, $user['Password']) ) {
                     session_unset();
                     $_SESSION['currentUser_id'] = $user['user_id'];
-                    $_SESSION['user_name'] = $user['Prénom'];
+                    $_SESSION['user_lastname'] = $user['Prénom'];
                     $_SESSION['user_firstname'] = $user['Nom'];
                     $_SESSION['user_role'] = $user['Rôle'];
                     setcookie('status', 'connected', time() + 3600, '/', '', false, true);

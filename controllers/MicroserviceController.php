@@ -33,11 +33,27 @@ class MicroserviceController
     }
     public function displayDashboard()
     {
-        $headers = $this->MicroserviceModel->getTableHeader();
-        $rows = $this->MicroserviceModel->getMicroservicesWithUserDetails();
-        require 'views/dashboard-view.php';
+        if (!isset($_SESSION)) {
+            header('Location: ' . BROWSER_PATH . '/index.php');
+        } else {
+            if ($_SESSION['user_role'] === 0) {
+                $rows = $this->MicroserviceModel->getMicroservicesWithUserDetails();
+                require 'views/dashboard-view.php';
+            } else if ($_SESSION['user_role'] === 1) {
+                $rows = $this->MicroserviceModel->getMicroserviceByUserId($_SESSION['currentUser_id']);
+                require 'views/dashboard-view.php';
+            } else {
+                header('Location: ' . BROWSER_PATH . '/index.php');
+            }
+        }
     }
 
+    // public function displayMicroserviceByUser()
+    // {
+    //     $id = isset($_GET["id"]) ? $_GET["id"] : NULL;
+    //     $rows = $this->MicroserviceModel->getMicroserviceByUserId($id);
+    //     require 'views/posts-view.php';
+    // }
 
     public function handlePostFormSubmission()
     {
@@ -103,9 +119,9 @@ class MicroserviceController
     {
         return $this->MicroserviceModel->deleteMicroservice($id);
     }
-    public function uploadMicroserviceImage($image,$oldImage)
+    public function uploadMicroserviceImage($image, $oldImage)
     {
-        return $this->MicroserviceModel->uploadImage($image,$oldImage);
+        return $this->MicroserviceModel->uploadImage($image, $oldImage);
     }
     public function sanitizeMicroserviceInput($data)
     {

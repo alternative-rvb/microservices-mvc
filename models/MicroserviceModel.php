@@ -41,7 +41,7 @@ class MicroserviceModel extends Database
         try {
             $db = new Database();
             $connexion = $db->getPDO();
-            $sql = "SELECT microservice_id, Titre, Contenu, Prix, Image, Prénom, Nom, Rôle, ms_posts.user_id FROM ms_posts INNER JOIN ms_users WHERE ms_posts.user_id = ms_users.user_id ORDER BY microservice_id DESC";
+            $sql = "SELECT microservice_id, Titre, Contenu, Prix, Image, Prénom, Nom, Rôle, ms_posts.user_id FROM ms_posts INNER JOIN ms_users ON ms_posts.user_id = ms_users.user_id ORDER BY microservice_id DESC";
             $req = $connexion->query($sql);
             $rows = $req->fetchAll();
             $db->close();
@@ -63,6 +63,25 @@ class MicroserviceModel extends Database
             $req->bindParam(':id', $id, PDO::PARAM_INT);
             $req->execute();
             $row = $req->fetch();
+            $db->close();
+
+            return $row;
+        } catch (PDOException $e) {
+            echo "Erreur: " . $e->getMessage();
+        }
+    }
+
+    // ANCHOR READ Afficher pour l'utilisateur
+    public function getMicroserviceByUserId($id)
+    {
+        try {
+            $db = new Database();
+            $connexion = $db->getPDO();
+            $sql = "SELECT ms_posts.microservice_id, Titre, Contenu, Prix, Image, Prénom, Nom, Rôle, ms_posts.user_id FROM ms_posts INNER JOIN ms_users ON ms_posts.user_id = ms_users.user_id WHERE ms_users.user_id = :id ORDER BY ms_posts.microservice_id DESC";
+            $req = $connexion->prepare($sql);
+            $req->bindParam(':id', $id, PDO::PARAM_INT);
+            $req->execute();
+            $row = $req->fetchAll();
             $db->close();
 
             return $row;

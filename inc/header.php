@@ -23,11 +23,24 @@ include_once 'models/variables.php';
                         <a class="nav-link" href="#">Pricing</a>
                     </li>
                     <?php
-                    if (isset($_SESSION['user_role']) && $_SESSION['user_role'] == 1) :
+                    if (isset($_SESSION['user_role'])) :
                     ?>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <?= isset($_SESSION['user_firstname']) ? '<span class="badge rounded-pill text-bg-custom-primary"><i class="bi bi-person-circle"></i> ' . $_SESSION['user_firstname'] . ' Administrateur</span>' : '' ?>
+                                <?php
+                                 if (isset($_SESSION)) :
+                                    if (isset($_SESSION['user_role']) && $_SESSION['user_role'] === 0) :
+                                ?>
+                                <span class="badge rounded-pill text-bg-custom-secondary"><i class="bi bi-person-circle"></i> <?=$_SESSION['user_firstname'] .' '. $_SESSION['user_lastname'].' Admin'?> </span>
+                                  
+                                    <?php
+                                    else :
+                                    ?>
+                                    <span class="badge rounded-pill text-bg-custom-primary"><i class="bi bi-person-circle"></i> <?=$_SESSION['user_firstname'] .' '. $_SESSION['user_lastname']?> </span>
+                                    <?php
+                                        endif;
+                                    endif;
+                                  ?>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-custom-dark">
                                 <li><a class="dropdown-item" href="<?= BROWSER_PATH . '/dashboard.php' ?>">Dashboard</a></li>
