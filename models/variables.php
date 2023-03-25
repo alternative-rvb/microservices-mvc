@@ -4,7 +4,7 @@ session_start();
 define('LOCAL_SERVER', 'C:/laragon/www');
 define('PROJECT_FOLDER', '/microservices-mvc');
 define('ROOT_PATH', ($_SERVER['DOCUMENT_ROOT'] == LOCAL_SERVER) ? $_SERVER['DOCUMENT_ROOT'] . PROJECT_FOLDER : $_SERVER['DOCUMENT_ROOT']);
-define('SQL_FILE_PATH', ROOT_PATH . '/.bdd/microservices_db.sql');
+define('SQL_FILE_PATH', ROOT_PATH . '/demo/microservices_db.sql');
 define('BROWSER_PATH', ($_SERVER['DOCUMENT_ROOT'] == LOCAL_SERVER) ? PROJECT_FOLDER :  '');
 
 
