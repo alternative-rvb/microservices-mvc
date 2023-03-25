@@ -15,6 +15,14 @@
     <div class="container">
       <div class="row">
         <h1 class="text-custom-dark">Microservices</h1>
+        <?php
+        if (!empty($_SESSION['Message'])) :
+        ?>
+          <?= $_SESSION['Message'] ?>
+        <?php
+          unset($_SESSION['Message']);
+        endif;
+        ?>
       </div>
       <?php
       // REVIEW Préparer une requête pour récupérer les auteurs des microservices

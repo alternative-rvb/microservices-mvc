@@ -16,15 +16,16 @@ foreach ($rows as $row) :
                     <a class="link-custom-primary stretched-link text-decoration-none" href="formulaire-microservice.php?id=<?= $row['microservice_id'] ?>"><i class="bi bi-pencil-square"></i> ID: <?= $row['microservice_id'] ?></a>
                 </p>
 
+                <p><strong>Titre: </strong><?= $row['Titre'] ?></p>
+                <hr class="border border-white ">
+
+                <p><strong>Description: </strong><?= $row['Contenu'] ?></p>
+                <hr class="border border-white ">
+                
                 <p><strong>Prix:</strong> <?= $row['Prix'] ?> €</p>
                 <p><strong>Auteur: </strong><?= $row['Prénom'] . ' ' . $row['Nom'] ?></p>
                 <p><?= ($row['Rôle'] === 0) ? '<span class="badge rounded-pill text-bg-custom-secondary">Administrateur</span> ' :  '' ?></p>
 
-                <hr class="border border-white ">
-                <p><strong>Titre: </strong><?= $row['Titre'] ?></p>
-
-                <hr class="border border-white ">
-                <p><strong>Description: </strong><?= $row['Contenu'] ?></p>
             </div>
             <div class="bg-light p-2 col-md-3 text-center">
                 <?php

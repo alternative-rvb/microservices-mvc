@@ -33,7 +33,7 @@ class MicroserviceController
     }
     public function displayDashboard()
     {
-        if (!isset($_SESSION)) {
+        if (empty($_SESSION)) {
             header('Location: ' . BROWSER_PATH . '/index.php');
         } else {
             if ($_SESSION['user_role'] === 0) {
@@ -57,16 +57,33 @@ class MicroserviceController
 
     public function handlePostFormSubmission()
     {
+        // var_dump($_SESSION);
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $action = $_POST['action'];
             $id = $_POST['id'];
             if ($action != 'DELETE') {
-                $titre = (string)$this->sanitizeMicroserviceInput($_POST['titre']);
-                $contenu = (string)$this->sanitizeMicroserviceInput($_POST['contenu']);
-                $prix = (float)$this->sanitizeMicroserviceInput($_POST['prix']);
-                $image = (string)$this->sanitizeMicroserviceInput($this->uploadMicroserviceImage($_FILES['image'], $_POST['old_image']));
+                $titre = $_SESSION['titre'] = (string)$this->sanitizeMicroserviceInput($_POST['titre']);
+                $contenu = $_SESSION['contenu'] = (string)$this->sanitizeMicroserviceInput($_POST['contenu']);
+                $prix = $_SESSION['prix'] = (float)$this->sanitizeMicroserviceInput($_POST['prix']);
 
-                $userID = (int) $this->sanitizeMicroserviceInput($_POST['userID']);
+                // Validation de la longueur du titre
+                if (strlen($titre) < 5 || strlen($titre) > 100) {
+                    $_SESSION['Message'] = '<p class="alert alert-warning" role="alert">Le titre doit contenir entre 5 et 100 caractères.</p>';
+                    header("Location: " . $_SERVER['PHP_SELF'] . '?id=' . $id);
+                    exit();
+                }
+
+                // Validation du prix
+                if ($prix <= 0) {
+                    $_SESSION['Message'] = '<p class="alert alert-warning" role="alert">Le prix doit être supérieur à 0.</p>';
+                    header("Location: " . $_SERVER['PHP_SELF'] . '?id=' . $id);
+                    exit();
+                }
+
+                $image = $_SESSION['image'] = (string)$this->sanitizeMicroserviceInput($this->uploadMicroserviceImage($_FILES['image'], $_POST['old_image']));
+
+                $userID = $_SESSION['userID'] =  (int) $this->sanitizeMicroserviceInput($_POST['userID']);
+                // $_SESSION['Message'] = '<p class="alert alert-success" role="alert">Le microservice a été enregistré avec succès.</p>';
             }
 
             switch ($action):

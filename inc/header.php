@@ -65,3 +65,6 @@ include_once 'models/variables.php';
     </nav>
     </div>
 </header>
+<?php 
+// var_dump($_SESSION)
+?>

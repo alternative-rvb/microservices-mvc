@@ -14,6 +14,14 @@
 		<div class="row justify-content-center">
 			<div class="col-md-6">
 				<?php
+				if (!empty($_SESSION['Message'])) :
+				?>
+					<?= $_SESSION['Message'] ?></p>
+				<?php
+					unset($_SESSION['Message']);
+				endif;
+				?>
+				<?php
 				require_once 'controllers/MicroserviceController.php';
 				$MC = new MicroserviceController();
 				$MC->handlePostFormSubmission();

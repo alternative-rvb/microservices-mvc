@@ -20,7 +20,7 @@ require_once 'models/variables.php'
             <h1 class="text-custom-dark">Deconnexion</h1>
         </div>
         <?php
-        session_unset();
+        session_destroy();
         setcookie('status', 'disconnected', time() + 3600, '/', '', false, true);
         header('Location: ' . BROWSER_PATH . '/connexion.php');
         ?>

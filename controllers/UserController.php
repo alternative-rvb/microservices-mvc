@@ -25,10 +25,10 @@ class UserController
 
             // Vérifier si l'email existe déjà
             if ($this->UserModel->isEmailExists($email)) {
-                $_SESSION['Message'] = "L'email existe déjà.";
+                $_SESSION['Message'] = "<p class='alert alert-danger'>L'email existe déjà</p>";
             } else {
                 $this->UserModel->createUser($nom, $prenom, $email, $password, $role);
-                $_SESSION['Message'] = "Votre compte a été créé avec succès. Veuillez vous connecter.";
+                $_SESSION['Message'] = "<p class='alert alert-success'>L'utilisateur $prenom $nom a été ajouté avec succès!</p>";
                 header('Location: ' . BROWSER_PATH . '/connexion.php');
                 exit();
             }
@@ -51,10 +51,10 @@ class UserController
                     setcookie('status', 'connected', time() + 3600, '/', '', false, true);
                     header('Location: ' . BROWSER_PATH . '/dashboard.php');
                 } else {
-                    $_SESSION['Message'] = "Mot de passe incorrect ou compte interdit";
+                    $_SESSION['Message'] = "<p class='alert alert-danger'>Mot de passe incorrect</p>";
                 }
             } else {
-                $_SESSION['Message'] = "Email incorrect";
+                $_SESSION['Message'] = "<p class='alert alert-warning'>L'email n'existe pas</p>";
             }
         }
         require 'views/signin-form-view.php';

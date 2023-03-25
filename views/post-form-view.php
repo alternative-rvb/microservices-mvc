@@ -27,7 +27,7 @@
             <input type="hidden" name="old_image" value="<?= isset($row['Image']) ? $row['Image'] : NULL ?>">
 
             <label class="form-label" for="image">Ajouter une image :
-                <?php if (isset($row['Image'])) : ?>
+                <?php if (!empty($row['Image'])) : ?>
                     <div>
                         <img src="uploads/images/<?= $row['Image'] ?>" alt="<?= $row['Image'] ?>" width="100px" />
                     </div>

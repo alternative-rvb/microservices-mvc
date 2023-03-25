@@ -166,18 +166,13 @@ class MicroserviceModel extends Database
     {
         if (isset($image) and $image['error'] == 0) {
 
-            // echo "====> Fichier reçu 👍<br>";
-            // Vérifiez si l'ancienne image est définie et non vide
-            if (!empty($oldImage)) {
-                $old_image_path = 'uploads/images/' . $oldImage;
-                if (file_exists($old_image_path)) {
-                    unlink($old_image_path);
-                }
-            }
+
+
 
             // Testons si le fichier n'est pas trop gros
             if ($image['size'] <= 5000000) {
-                // echo "====> Taille Fichier < 5Mo 👍<br>";
+
+                $_SESSION['Message'] = "<p class='text-success'>Fichier reçu</p>";
 
                 // Testons si l'extension est autorisée
                 $infosfichier = pathinfo($image['name']);
@@ -185,16 +180,30 @@ class MicroserviceModel extends Database
                 $extensions_autorisees = array('jpg', 'jpeg', 'gif', 'png');
 
                 if (in_array($extension_upload, $extensions_autorisees)) {
-                    // echo "====> Extension Autorisée 👍<br>";
+
+                    $_SESSION['Message'] = "<p class='text-success'>Extension Autorisée</p>";
 
                     // On peut valider le fichier et le stocker définitivement
 
                     $uniqueName = uniqid() . '.' . $extension_upload;
                     move_uploaded_file($image['tmp_name'], 'uploads/images/' . $uniqueName);
                     //  FIXME Attention la même image peut pas être téléversée 2 fois
-                    // echo "====> Téléversement de <strong>" . $uniqueName . "</strong> terminé 👍<br>";
+                    // Vérifiez si l'ancienne image est définie et non vide
+                    if (!empty($oldImage)) {
+                        $old_image_path = 'uploads/images/' . $oldImage;
+                        if (file_exists($old_image_path)) {
+                            unlink($old_image_path);
+                        }
+                    }
+                    $_SESSION['Message'] = "<p class='text-success'>Téléversement de <strong>" . $uniqueName . "</strong> terminé</p>";
                     return $uniqueName;
+                } else {
+                    $_SESSION['Message'] = "<p class='text-danger'>Extension NON Autorisée</p>";
+                    return $oldImage;
                 }
+            } else {
+                $_SESSION['Message'] = "<p class='text-danger'>Taille Fichier > 5Mo</p>";
+                return $oldImage;
             }
         }
     }

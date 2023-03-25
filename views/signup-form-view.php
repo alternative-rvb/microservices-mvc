@@ -28,9 +28,7 @@
         <?php
         if (!empty($_SESSION['Message'])) :
         ?>
-            <div class="alert alert-warning" role="alert">
-                <p><?= $_SESSION['Message'] ?></p>
-            </div>
+            <?= $_SESSION['Message'] ?>
         <?php
         endif;
         ?>
