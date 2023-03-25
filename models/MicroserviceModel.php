@@ -116,32 +116,29 @@ class MicroserviceModel extends Database
         try {
             $db = new Database();
             $connexion = $db->getPDO();
+            
+            $sql = "UPDATE ms_posts SET Titre = :titre, Contenu = :contenu, Prix = :prix, "
+                 . (!empty($image) ? "Image = :image, " : "")
+                 . "user_id = :userID WHERE microservice_id = :id ";
+            
+            $req = $connexion->prepare($sql);
+            $req->bindParam(':titre', $titre, PDO::PARAM_STR);
+            $req->bindParam(':contenu', $contenu, PDO::PARAM_STR);
+            $req->bindParam(':prix', $prix, PDO::PARAM_STR);
+            
             if (!empty($image)) {
-                $sql = "UPDATE ms_posts SET Titre = :titre, Contenu = :contenu, Prix = :prix, Image = :image, user_id = :userID WHERE microservice_id = :id ";
-                $req = $connexion->prepare($sql);
-                $req->bindParam(':titre', $titre, PDO::PARAM_STR);
-                $req->bindParam(':contenu', $contenu, PDO::PARAM_STR);
-                $req->bindParam(':prix', $prix, PDO::PARAM_INT);
                 $req->bindParam(':image', $image, PDO::PARAM_STR);
-                $req->bindParam(':userID', $userID, PDO::PARAM_INT);
-                $req->bindParam(':id', $id, PDO::PARAM_INT);
-                $req->execute();
-                $db->close();
-            } else {
-                $sql = "UPDATE ms_posts SET Titre = :titre, Contenu = :contenu, Prix = :prix, user_id = :userID WHERE microservice_id = :id ";
-                $req = $connexion->prepare($sql);
-                $req->bindParam(':titre', $titre, PDO::PARAM_STR);
-                $req->bindParam(':contenu', $contenu, PDO::PARAM_STR);
-                $req->bindParam(':prix', $prix, PDO::PARAM_INT);
-                $req->bindParam(':userID', $userID, PDO::PARAM_INT);
-                $req->bindParam(':id', $id, PDO::PARAM_INT);
-                $req->execute();
-                $db->close();
             }
+            
+            $req->bindParam(':userID', $userID, PDO::PARAM_INT);
+            $req->bindParam(':id', $id, PDO::PARAM_INT);
+            $req->execute();
+            $db->close();
         } catch (PDOException $e) {
             echo "Erreur: " . $e->getMessage();
         }
     }
+    
 
 
     // ANCHOR DELETE Supprimer
