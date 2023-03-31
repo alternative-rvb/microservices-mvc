@@ -1,10 +1,11 @@
 <?php
-include_once 'models/variables.php';
+session_start();
+// include_once '../models/variables.php';
 ?>
 <header>
     <nav class="navbar navbar-dark  navbar-expand-lg bg-custom-dark" data-bs-theme="dark">
         <div class="container">
-            <a class="navbar-brand" href="index.php">
+            <a class="navbar-brand" href="<?= BROWSER_PATH.'/' ?>">
                 <img src="https://api.dicebear.com/5.x/identicon/svg?seed=ms-logo-0
 " alt="" height="20"> Microservices
             </a>
@@ -14,7 +15,7 @@ include_once 'models/variables.php';
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="index.php">Home</a>
+                        <a class="nav-link" aria-current="page" href="<?= BROWSER_PATH.'/' ?>">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Features</a>
@@ -43,19 +44,19 @@ include_once 'models/variables.php';
                                   ?>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-custom-dark">
-                                <li><a class="dropdown-item" href="<?= BROWSER_PATH . '/dashboard.php' ?>">Dashboard</a></li>
+                                <li><a class="dropdown-item" href="<?= BROWSER_PATH . '/dashboard/' ?>">Dashboard</a></li>
                                 <li><a class="dropdown-item disable" href="#">Profile</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="<?= BROWSER_PATH . '/deconnexion.php' ?>">Déconnexion</a></li>
+                                <li><a class="dropdown-item" href="<?= BROWSER_PATH . '/pages/deconnexion.php' ?>">Déconnexion</a></li>
                             </ul>
                         </li>
                     <?php
                     else :
                     ?>
-                        <li class="nav-item"><a class="nav-link disable" href="<?= BROWSER_PATH . '/inscription.php' ?>"> Inscription </a></li>
-                        <li class="nav-item"><a class="nav-link" href="<?= BROWSER_PATH . '/connexion.php' ?>">Connexion</a></li>
+                        <li class="nav-item"><a class="nav-link disable" href="<?= BROWSER_PATH . '/pages/inscription.php' ?>"> Inscription </a></li>
+                        <li class="nav-item"><a class="nav-link" href="<?= BROWSER_PATH . '/pages/connexion.php' ?>">Connexion</a></li>
                     <?php
                     endif;
                     ?>

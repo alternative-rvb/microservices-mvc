@@ -24,16 +24,16 @@
         </div>
         <div class="mb-3">
             <!-- ANCHOR HIDDEN -->
-            <input type="hidden" name="old_image" value="<?= isset($_SESSION['image']) ? $_SESSION['image'] : (isset($row['Image']) ? $row['Image']  : NULL) ?>">
+            <input type="hidden" name="old_image" value="<?= isset($row['Image']) ? $row['Image']  : NULL ?>">
 
             <label class="form-label" for="image">Ajouter une image :
                 <?php if (!empty($row['Image'])) : ?>
                     <div>
-                        <img src="uploads/images/<?= isset($_SESSION['image']) ? $_SESSION['image'] : (isset($row['Image']) ? $row['Image']  : NULL) ?>" alt="<?= isset($_SESSION['image']) ? $_SESSION['image'] : (isset($row['Image']) ? $row['Image']  : NULL) ?>" width="100px" />
+                        <img src="<?= BROWSER_PATH . '/uploads/images/' .(isset($row['Image']) ? $row['Image']  : NULL) ?>" alt="<?= isset($_SESSION['titre']) ? $_SESSION['titre'] : (isset($row['Titre']) ? $row['Titre']  : NULL)  ?>" width="100px" />
                     </div>
                     <p> <strong>Image actuelle :</strong><?= $row['Image'] ?></p>
+                <?php endif ?>
             </label>
-        <?php endif ?>
         </div>
         <input id="image" class="form-control" type="file" name="image"><br />
         <div>
@@ -51,5 +51,5 @@
             </div>
         </form>
     <?php endif ?>
-    <a class="btn btn-sm" href="<?= BROWSER_PATH . '/dashboard.php' ?>">Annuler</a>
+    <a class="btn btn-sm" href="<?= BROWSER_PATH . '/dashboard/' ?>">Annuler</a>
 </div>

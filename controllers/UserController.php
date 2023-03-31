@@ -1,6 +1,6 @@
 <?php
-
-require_once 'models/UserModel.php';
+require_once ROOT_PATH.'/models/variables.php';
+require_once ROOT_PATH.'/models/UserModel.php';
 class UserController
 {
     private $UserModel;
@@ -29,11 +29,11 @@ class UserController
             } else {
                 $this->UserModel->createUser($nom, $prenom, $email, $password, $role);
                 $_SESSION['Message'] = "<p class='alert alert-success'>L'utilisateur $prenom $nom a été ajouté avec succès!</p>";
-                header('Location: ' . BROWSER_PATH . '/connexion.php');
+                header('Location: ' . BROWSER_PATH . '/pages/connexion.php');
                 exit();
             }
         }
-        require 'views/signup-form-view.php';
+        require ROOT_PATH.'/views/signup-form-view.php';
     }
     public function handleSignInFormSubmission()
     {
@@ -49,7 +49,7 @@ class UserController
                     $_SESSION['user_firstname'] = $user['Nom'];
                     $_SESSION['user_role'] = $user['Rôle'];
                     setcookie('status', 'connected', time() + 3600, '/', '', false, true);
-                    header('Location: ' . BROWSER_PATH . '/dashboard.php');
+                    header('Location: ' . BROWSER_PATH . '/dashboard/');
                 } else {
                     $_SESSION['Message'] = "<p class='alert alert-danger'>Mot de passe incorrect</p>";
                 }
@@ -57,7 +57,7 @@ class UserController
                 $_SESSION['Message'] = "<p class='alert alert-warning'>L'email n'existe pas</p>";
             }
         }
-        require 'views/signin-form-view.php';
+        require ROOT_PATH.'/views/signin-form-view.php';
     }
     public function sanitizeSignInInput($data)
     {

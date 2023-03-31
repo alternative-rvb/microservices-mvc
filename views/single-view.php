@@ -1,9 +1,9 @@
 <article class="col-md-6 p-2">
 	<?php
-	if (isset($row['Image']) && !empty($row['Image']) && file_exists('uploads/images/' . $row['Image'])) :
+	if (isset($row['Image']) && !empty($row['Image']) && file_exists(ROOT_PATH . '/uploads/images/' . $row['Image'])) :
 	?>
 		<div class="text-center">
-			<img class="img-fluid" src="<?= 'uploads/images/' . $row['Image'] ?>" alt="<?= $row['Titre'] ?>">
+			<img class="img-fluid" src="<?= BROWSER_PATH . '/uploads/images/' . $row['Image'] ?>" alt="<?= $row['Titre'] ?>">
 		</div>
 	<?php
 	endif;

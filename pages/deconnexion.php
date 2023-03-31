@@ -1,5 +1,5 @@
 <?php
-require_once 'models/variables.php'
+require_once '../models/variables.php'
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -22,7 +22,7 @@ require_once 'models/variables.php'
         <?php
         session_destroy();
         setcookie('status', 'disconnected', time() + 3600, '/', '', false, true);
-        header('Location: ' . BROWSER_PATH . '/connexion.php');
+        header('Location: ' . BROWSER_PATH . '/pages/connexion.php');
         ?>
     </main>
     <?php

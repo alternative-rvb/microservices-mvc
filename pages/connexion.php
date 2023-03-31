@@ -1,6 +1,7 @@
-<?php
-require_once 'models/variables.php'
+<?php 
+require_once '../models/variables.php';
 ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -21,7 +22,7 @@ require_once 'models/variables.php'
         </div>
         <?php
 
-        require_once 'controllers/UserController.php';
+        require_once ROOT_PATH.'/controllers/UserController.php';
         $MC = new UserController();
         $MC->handleSignInFormSubmission();
         ?>

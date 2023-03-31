@@ -1,15 +1,18 @@
+<?php 
+require_once '../models/variables.php';
+?>
 <!doctype html>
 <html lang="en">
 
 <head>
     <?php
-    include_once 'inc/head.php';
+    include_once ROOT_PATH . '/inc/head.php';
     ?>
 </head>
 
 <body>
     <?php
-    include_once 'inc/header.php';
+    include_once ROOT_PATH . '/inc/header.php';
     ?>
     <main class="py-4">
         <div class="container">
@@ -20,7 +23,7 @@
                 // displayPosts('microservices');
                 // ANCHOR NEW
 
-                require_once 'controllers/MicroserviceController.php';
+                require_once ROOT_PATH . '/controllers/MicroserviceController.php';
                 $MC = new MicroserviceController();
                 $MC->displayMicroservice();
                 ?>
@@ -28,7 +31,7 @@
         </div>
     </main>
     <?php
-    include_once 'inc/footer.php';
+    include_once ROOT_PATH . '/inc/footer.php';
     ?>
 </body>
 

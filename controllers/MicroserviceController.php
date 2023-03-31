@@ -1,6 +1,6 @@
 <?php
-// require_once '../models/functions.php';
-require_once 'models/MicroserviceModel.php';
+require_once ROOT_PATH.'/models/variables.php';
+require_once ROOT_PATH . '/models/MicroserviceModel.php';
 class MicroserviceController
 {
     private $MicroserviceModel;
@@ -11,12 +11,12 @@ class MicroserviceController
     public function displayAllMicroservices()
     {
         $rows = $this->MicroserviceModel->getAllMicroservices();
-        require 'views/posts-view.php';
+        require ROOT_PATH . '/views/posts-view.php';
     }
     public function displayMicroservicesWithUserDetails()
     {
         $rows = $this->MicroserviceModel->getMicroservicesWithUserDetails();
-        require 'views/posts-view.php';
+        require ROOT_PATH . '/views/posts-view.php';
     }
     public function displayMicroservice()
     {
@@ -29,7 +29,7 @@ class MicroserviceController
             $action = "CREATE";
             $libelle = "Créer";
         }
-        require 'views/single-view.php';
+        require ROOT_PATH.'/views/single-view.php';
     }
     public function displayDashboard()
     {
@@ -38,10 +38,10 @@ class MicroserviceController
         } else {
             if ($_SESSION['user_role'] === 0) {
                 $rows = $this->MicroserviceModel->getMicroservicesWithUserDetails();
-                require 'views/dashboard-view.php';
+                require ROOT_PATH . '/views/dashboard-view.php';
             } else if ($_SESSION['user_role'] === 1) {
                 $rows = $this->MicroserviceModel->getMicroserviceByUserId($_SESSION['currentUser_id']);
-                require 'views/dashboard-view.php';
+                require ROOT_PATH . '/views/dashboard-view.php';
             } else {
                 header('Location: ' . BROWSER_PATH . '/index.php');
             }
@@ -103,7 +103,7 @@ class MicroserviceController
             endswitch;
 
             // Redirection vers la page d'accueil
-            header('Location: dashboard.php');
+            header('Location: '.BROWSER_PATH.'/dashboard/');
             exit();
         }
 
@@ -117,7 +117,7 @@ class MicroserviceController
             $action = "CREATE";
             $libelle = '<i class="bi bi-plus-square"></i> Créer';
         }
-        require 'views/post-form-view.php';
+        require ROOT_PATH.'/views/post-form-view.php';
     }
 
 

@@ -183,11 +183,11 @@ class MicroserviceModel extends Database
                     // On peut valider le fichier et le stocker définitivement
 
                     $uniqueName = uniqid() . '.' . $extension_upload;
-                    move_uploaded_file($image['tmp_name'], 'uploads/images/' . $uniqueName);
+                    move_uploaded_file($image['tmp_name'], ROOT_PATH.'/uploads/images/' . $uniqueName);
                     //  FIXME Attention la même image peut pas être téléversée 2 fois
                     // Vérifiez si l'ancienne image est définie et non vide
                     if (!empty($oldImage)) {
-                        $old_image_path = 'uploads/images/' . $oldImage;
+                        $old_image_path = ROOT_PATH.'/uploads/images/' . $oldImage;
                         if (file_exists($old_image_path)) {
                             unlink($old_image_path);
                         }

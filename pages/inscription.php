@@ -1,15 +1,19 @@
+<?php 
+require_once '../models/variables.php';
+?>
+
 <!doctype html>
 <html lang="en">
 
 <head>
     <?php
-    include_once 'inc/head.php';
+    include_once ROOT_PATH . '/inc/head.php';
     ?>
 </head>
 
 <body>
     <?php
-    include_once 'inc/header.php';
+    include_once ROOT_PATH . '/inc/header.php';
     ?>
     <main class="container p-1">
         <div class="row py-4 text-center">
@@ -17,7 +21,7 @@
         </div>
         <div class="row">
             <?php
-            require_once 'controllers/UserController.php';
+            require_once ROOT_PATH . '/controllers/UserController.php';
             $MC = new UserController();
             $MC->handleSignUpFormSubmission();
             ?>
@@ -26,7 +30,7 @@
 
     </main>
     <?php
-    include_once 'inc/footer.php';
+    include_once ROOT_PATH . '/inc/footer.php';
     ?>
 </body>
 
