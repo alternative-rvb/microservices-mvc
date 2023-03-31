@@ -16,8 +16,8 @@ require_once 'models/variables.php';
     include_once ROOT_PATH . '/inc/header.php';
     ?>
     <main>
-        <div class="container-fluid mb-4">
-            <div class="row py-5 bg-custom-primary justify-content-center">
+        <div class="hero container-fluid mb-4">
+            <div class="row py-5 justify-content-center">
                 <div class="col-md-6">
                     <h1 class="text-white text-center">20 000 micro-services pour tous vos besoins.</h1>
                 </div>

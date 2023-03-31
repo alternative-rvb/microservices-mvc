@@ -14,8 +14,8 @@ foreach ($rows as $row) :
             endif;
             ?>
             <div class="p-2">
-                <h3><a class="link-custom-dark" href="<?= BROWSER_PATH.'/pages/post.php?id='.$row['microservice_id'] ?>"><?= $row['Titre'] ?></a></h3>
-                <p class="text-custom-secondary"><i class="bi bi-person-circle"></i>
+                <h3><a class="link-custom-dark text-decoration-none fw-bold" href="<?= BROWSER_PATH.'/pages/post.php?id='.$row['microservice_id'] ?>"><?= $row['Titre'] ?></a></h3>
+                <p class="text-custom-primary"><i class="bi bi-person-circle"></i>
                     <?php
                     if (!empty($row['Prénom']) && !empty($row['Nom'])) {
                         echo $row['Prénom'] . ' ' . $row['Nom'];
@@ -27,9 +27,9 @@ foreach ($rows as $row) :
                 <p><?= $row['Contenu'] ?></p>
             </div>
             <p class="p-2 mt-auto d-flex justify-content-between align-items-end">
-                <a class="btn btn-custom-secondary" href="#">À partir de <strong><?= $row['Prix'] ?> €</strong></a>
+                <a class="price-link" href="#">À partir de <strong><?= $row['Prix'] ?> €</strong></a>
                 <!-- READ MORE -->
-                <a class="link-custom-secondary" href="<?= BROWSER_PATH.'/pages/post.php?id='. $row['microservice_id'] ?>">En savoir plus </a>
+                <a class="link-custom-primary link-underline-opacity-10" href="<?= BROWSER_PATH.'/pages/post.php?id='. $row['microservice_id'] ?>">En savoir plus </a>
             </p>
         </div>
     </article>
