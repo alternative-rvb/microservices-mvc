@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : sam. 25 mars 2023 à 18:15
+-- Généré le : dim. 09 avr. 2023 à 21:33
 -- Version du serveur : 8.0.30
 -- Version de PHP : 8.1.10
 
@@ -29,26 +29,25 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `ms_posts` (
   `microservice_id` int NOT NULL,
-  `Titre` varchar(255) NOT NULL,
-  `Contenu` text NOT NULL,
-  `Prix` decimal(10,2) DEFAULT NULL,
-  `Image` varchar(255) NOT NULL,
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `content` mediumtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `price` decimal(10,2) DEFAULT NULL,
+  `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `user_id` int DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `ms_posts`
 --
 
-INSERT INTO `ms_posts` (`microservice_id`, `Titre`, `Contenu`, `Prix`, `Image`, `user_id`) VALUES
-(1, 'Création de site vitrine', 'Développer un site web simple et élégant pour présenter une entreprise, un produit ou un service, avec des pages de présentation, une galerie d&#039;images et des coordonnées.', 5.00, '641f39d61310b.jpg', 1),
-(2, 'Intégration d&#039;un blog', 'Ajouter un blog à un site web existant, en utilisant une plateforme de gestion de contenu (CMS) comme WordPress ou Ghost, et en personnalisant le design pour qu&#039;il corresponde à l&#039;identité visuelle du site.', 7.00, '641f39ce78a71.jpg', 1),
-(3, 'Mise en place d&#039;une boutique en ligne', 'Intégrer une solution e-commerce comme WooCommerce, Shopify ou PrestaShop à un site web existant, pour permettre la vente de produits ou services en ligne.', 5.00, '641f39c2a9c1b.jpg', 1),
-(4, 'Optimisation du référencement naturel (SEO)', 'Améliorer le classement d&#039;un site web dans les moteurs de recherche en optimisant la structure du site, les balises méta, le contenu et en créant des liens de qualité.', 2.00, '641f39b23d947.jpg', 1),
-(5, 'Création d&#039;un formulaire de contact', 'Concevoir et intégrer un formulaire de contact personnalisé sur un site web, avec validation des données saisies et envoi des informations par e-mail au propriétaire du site.', 5.00, '641f398fa1276.jpg', 1),
-(6, 'Adaptation de thèmes et plugins', 'Personnaliser un thème ou un plugin existant pour répondre aux besoins spécifiques d&#039;un client, en modifiant le code source ou en ajoutant des fonctionnalités supplémentaires.', 5.00, '641f397a76204.jpg', 1),
-(7, 'Maintenance et mises à jour', 'Assurer la maintenance d&#039;un site web, y compris les mises à jour du système, des plugins et du contenu, la résolution des problèmes de compatibilité et la mise en place de mesures de sécurité.', 8.00, '641f396e71059.jpg', 1),
-(65, '', '', 0.00, '', 0);
+INSERT INTO `ms_posts` (`microservice_id`, `title`, `content`, `price`, `image`, `user_id`) VALUES
+(2, 'Intégration d&#039;un blog', 'Ajouter un blog à un site web existant, en utilisant une plateforme de gestion de contenu (CMS) comme WordPress ou Ghost, et en personnalisant le design pour qu&#039;il corresponde à l&#039;identité visuelle du site.', 800.00, '64332e5fd3c10.jpg', 1),
+(3, 'Mise en place d&#039;une boutique en ligne', 'Intégrer une solution e-commerce comme WooCommerce, Shopify ou PrestaShop à un site web existant, pour permettre la vente de produits ou services en ligne.', 5000.00, '64332e52053cd.jpg', 1),
+(4, 'Optimisation du référencement naturel (SEO)', 'Améliorer le classement d&#039;un site web dans les moteurs de recherche en optimisant la structure du site, les balises méta, le contenu et en créant des liens de qualité.', 99.99, '64332e494cd34.jpg', 1),
+(5, 'Création d&#039;un formulaire de contact', 'Concevoir et intégrer un formulaire de contact personnalisé sur un site web, avec validation des données saisies et envoi des informations par e-mail au propriétaire du site.', 150.00, '6426f42702e31.jpg', 1),
+(6, 'Adaptation de thèmes et plugins', 'Personnaliser un thème ou un plugin existant pour répondre aux besoins spécifiques d&#039;un client, en modifiant le code source ou en ajoutant des fonctionnalités supplémentaires.', 299.00, '6426f43933939.jpg', 1),
+(65, '', '', 0.00, '', 0),
+(68, 'Kit de survie pour le web', 'Maintenance de site web et refonte graphique.', 300.00, '64332eaa40dcf.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -58,18 +57,18 @@ INSERT INTO `ms_posts` (`microservice_id`, `Titre`, `Contenu`, `Prix`, `Image`, 
 
 CREATE TABLE `ms_users` (
   `user_id` int NOT NULL,
-  `Nom` varchar(128) NOT NULL,
-  `Prénom` varchar(128) NOT NULL,
-  `Email` varchar(128) NOT NULL,
-  `Password` varchar(255) DEFAULT NULL,
-  `Rôle` int DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+  `last_name` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `first_name` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `email` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `role` int DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `ms_users`
 --
 
-INSERT INTO `ms_users` (`user_id`, `Nom`, `Prénom`, `Email`, `Password`, `Rôle`) VALUES
+INSERT INTO `ms_users` (`user_id`, `last_name`, `first_name`, `email`, `password`, `role`) VALUES
 (1, 'Doe', 'John', 'john.doe@example.com', '$2y$10$BWhNQ00D6eKuA5AhV0KrOu1TqMK.uZrPuapy8HMiX3s8JYMF9dpyC', 0),
 (2, 'Stracke', 'Francesco', '', NULL, NULL),
 (3, 'MacGyver', 'Melyna', '', NULL, NULL),
@@ -85,7 +84,9 @@ INSERT INTO `ms_users` (`user_id`, `Nom`, `Prénom`, `Email`, `Password`, `Rôle
 (13, 'Tentacles', 'Squidward', '', NULL, NULL),
 (14, 'Cheeks', 'Sandy', '', NULL, NULL),
 (15, 'Krabs', 'Eugene', '', NULL, NULL),
-(16, '', '', '', NULL, NULL);
+(16, '', '', '', NULL, NULL),
+(43, 'Mich', 'Muche', 'mich.muche@example.com', '$2y$10$Wc9RxLvuaY/5x3acIN502OVLrQsCQjDDjJTpwvVWT6KSAAKw9afdC', 1),
+(44, 'A', 'A', 'jane.doe@example.com', '$2y$10$Ujo1ovWJ3fE5Bdo7cwZi9eiQa8DjgYBQfXFI9E17QdKkvghP9YHWu', 1);
 
 --
 -- Index pour les tables déchargées
@@ -111,13 +112,13 @@ ALTER TABLE `ms_users`
 -- AUTO_INCREMENT pour la table `ms_posts`
 --
 ALTER TABLE `ms_posts`
-  MODIFY `microservice_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `microservice_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
 -- AUTO_INCREMENT pour la table `ms_users`
 --
 ALTER TABLE `ms_users`
-  MODIFY `user_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `user_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
