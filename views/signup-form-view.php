@@ -5,7 +5,7 @@
             <input type="text" class="form-control" id="nom" name="nom" required>
         </div>
         <div class="mb-3">
-            <label for="prenom" class="form-label">Prénom :</label>
+            <label for="prenom" class="form-label">first_name :</label>
             <input type="text" class="form-control" id="prenom" name="prenom" required>
         </div>
         <div class="mb-3">

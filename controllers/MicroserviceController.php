@@ -80,7 +80,7 @@ class MicroserviceController
                     exit();
                 }
 
-                $image = $_SESSION['image'] = (string)$this->sanitizeMicroserviceInput($this->uploadMicroserviceImage($_FILES['image'], $_POST['old_image']));
+                $image = $_SESSION['image'] = (string)$this->sanitizeMicroserviceInput($this->uploadMicroserviceimage($_FILES['image'], $_POST['old_image']));
 
                 $userID = $_SESSION['userID'] =  (int) $this->sanitizeMicroserviceInput($_POST['userID']);
                 unset($_SESSION['titre'], $_SESSION['contenu'], $_SESSION['prix'], $_SESSION['image'], $_SESSION['postID']);
@@ -137,9 +137,9 @@ class MicroserviceController
     {
         return $this->MicroserviceModel->deleteMicroservice($id);
     }
-    public function uploadMicroserviceImage($image, $oldImage)
+    public function uploadMicroserviceimage($image, $oldimage)
     {
-        return $this->MicroserviceModel->uploadImage($image, $oldImage);
+        return $this->MicroserviceModel->uploadimage($image, $oldimage);
     }
     public function sanitizeMicroserviceInput($data)
     {

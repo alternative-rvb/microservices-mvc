@@ -42,12 +42,12 @@ class UserController
             $password = $_POST['password'];
             $user = $this->UserModel->getUserByEmail($email);
             if ($user) {
-                if ($password && $user['Password'] && password_verify($password, $user['Password']) ) {
+                if ($password && $user['password'] && password_verify($password, $user['password']) ) {
                     session_unset();
                     $_SESSION['currentUser_id'] = $user['user_id'];
-                    $_SESSION['user_lastname'] = $user['Prénom'];
-                    $_SESSION['user_firstname'] = $user['Nom'];
-                    $_SESSION['user_role'] = $user['Rôle'];
+                    $_SESSION['user_lastname'] = $user['first_name'];
+                    $_SESSION['user_firstname'] = $user['last_name'];
+                    $_SESSION['user_role'] = $user['role'];
                     setcookie('status', 'connected', time() + 3600, '/', '', false, true);
                     header('Location: ' . BROWSER_PATH . '/dashboard/');
                 } else {

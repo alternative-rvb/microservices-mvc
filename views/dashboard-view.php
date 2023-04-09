@@ -16,23 +16,23 @@ foreach ($rows as $row) :
                     <a class="link-custom-primary stretched-link text-decoration-none" href="<?=BROWSER_PATH?>/dashboard/formulaire-microservice.php?id=<?= $row['microservice_id'] ?>"><i class="bi bi-pencil-square"></i> ID: <?= $row['microservice_id'] ?></a>
                 </p>
 
-                <p><strong>Titre: </strong><?= $row['Titre'] ?></p>
+                <p><strong>Titre: </strong><?= $row['title'] ?></p>
                 <hr class="border border-white ">
 
-                <p><strong>Description: </strong><?= $row['Contenu'] ?></p>
+                <p><strong>Description: </strong><?= $row['content'] ?></p>
                 <hr class="border border-white ">
                 
-                <p><strong>Prix:</strong> <?= $row['Prix'] ?> €</p>
-                <p><strong>Auteur: </strong><?= $row['Prénom'] . ' ' . $row['Nom'] ?></p>
-                <p><?= ($row['Rôle'] === 0) ? '<span class="badge rounded-pill text-bg-custom-secondary">Administrateur</span> ' :  '' ?></p>
+                <p><strong>Prix:</strong> <?= $row['price'] ?> €</p>
+                <p><strong>Auteur: </strong><?= $row['first_name'] . ' ' . $row['last_name'] ?></p>
+                <p><?= ($row['role'] === 0) ? '<span class="badge rounded-pill text-bg-custom-secondary">Administrateur</span> ' :  '' ?></p>
 
             </div>
             <div class="bg-light p-2 col-md-3 text-center">
                 <?php
-                if (isset($row['Image']) && !empty($row['Image']) && file_exists(ROOT_PATH.'/uploads/images/' . $row['Image'])) :
+                if (isset($row['image']) && !empty($row['image']) && file_exists(ROOT_PATH.'/uploads/images/' . $row['image'])) :
                 ?>
-                    <img class="img-fluid" src="<?= BROWSER_PATH.'/uploads/images/' . $row['Image'] ?>" alt="<?= $row['Titre'] ?>">
-                    <p><small><strong>Repertoire: </strong>uploads/images/<?= $row['Image'] ?> </small></p>
+                    <img class="img-fluid" src="<?= BROWSER_PATH.'/uploads/images/' . $row['image'] ?>" alt="<?= $row['title'] ?>">
+                    <p><small><strong>Repertoire: </strong>uploads/images/<?= $row['image'] ?> </small></p>
                 <?php
                 endif;
                 ?>

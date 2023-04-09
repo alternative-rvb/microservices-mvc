@@ -41,7 +41,7 @@ class MicroserviceModel extends Database
         try {
             $db = new Database();
             $connexion = $db->getPDO();
-            $sql = "SELECT microservice_id, Titre, Contenu, Prix, Image, Prénom, Nom, Rôle, ms_posts.user_id FROM ms_posts INNER JOIN ms_users ON ms_posts.user_id = ms_users.user_id ORDER BY microservice_id DESC";
+            $sql = "SELECT microservice_id, title, content, price, image, first_name, last_name, role, ms_posts.user_id FROM ms_posts INNER JOIN ms_users ON ms_posts.user_id = ms_users.user_id ORDER BY microservice_id DESC";
             $req = $connexion->query($sql);
             $rows = $req->fetchAll();
             $db->close();
@@ -77,7 +77,7 @@ class MicroserviceModel extends Database
         try {
             $db = new Database();
             $connexion = $db->getPDO();
-            $sql = "SELECT ms_posts.microservice_id, Titre, Contenu, Prix, Image, Prénom, Nom, Rôle, ms_posts.user_id FROM ms_posts INNER JOIN ms_users ON ms_posts.user_id = ms_users.user_id WHERE ms_users.user_id = :id ORDER BY ms_posts.microservice_id DESC";
+            $sql = "SELECT ms_posts.microservice_id, title, content, price, image, first_name, last_name, role, ms_posts.user_id FROM ms_posts INNER JOIN ms_users ON ms_posts.user_id = ms_users.user_id WHERE ms_users.user_id = :id ORDER BY ms_posts.microservice_id DESC";
             $req = $connexion->prepare($sql);
             $req->bindParam(':id', $id, PDO::PARAM_INT);
             $req->execute();
@@ -96,7 +96,7 @@ class MicroserviceModel extends Database
         try {
             $db = new Database();
             $connexion = $db->getPDO();
-            $sql = "INSERT INTO ms_posts (Titre, Contenu, Prix, Image, user_id) VALUES (:titre, :contenu, :prix, :image, :userID)";
+            $sql = "INSERT INTO ms_posts (title, content, price, image, user_id) VALUES (:titre, :contenu, :prix, :image, :userID)";
             $req = $connexion->prepare($sql);
             $req->bindParam(':titre', $titre, PDO::PARAM_STR);
             $req->bindParam(':contenu', $contenu, PDO::PARAM_STR);
@@ -117,8 +117,8 @@ class MicroserviceModel extends Database
             $db = new Database();
             $connexion = $db->getPDO();
             
-            $sql = "UPDATE ms_posts SET Titre = :titre, Contenu = :contenu, Prix = :prix, "
-                 . (!empty($image) ? "Image = :image, " : "")
+            $sql = "UPDATE ms_posts SET title = :titre, content = :contenu, price = :prix, "
+                 . (!empty($image) ? "image = :image, " : "")
                  . "user_id = :userID WHERE microservice_id = :id ";
             
             $req = $connexion->prepare($sql);
@@ -159,7 +159,7 @@ class MicroserviceModel extends Database
     }
 
 
-    public function uploadImage($image, $oldImage)
+    public function uploadimage($image, $oldimage)
     {
         if (isset($image) and $image['error'] == 0) {
 
@@ -186,8 +186,8 @@ class MicroserviceModel extends Database
                     move_uploaded_file($image['tmp_name'], ROOT_PATH.'/uploads/images/' . $uniqueName);
                     //  FIXME Attention la même image peut pas être téléversée 2 fois
                     // Vérifiez si l'ancienne image est définie et non vide
-                    if (!empty($oldImage)) {
-                        $old_image_path = ROOT_PATH.'/uploads/images/' . $oldImage;
+                    if (!empty($oldimage)) {
+                        $old_image_path = ROOT_PATH.'/uploads/images/' . $oldimage;
                         if (file_exists($old_image_path)) {
                             unlink($old_image_path);
                         }
@@ -196,11 +196,11 @@ class MicroserviceModel extends Database
                     return $uniqueName;
                 } else {
                     $_SESSION['Message'] = "<p class='text-danger'>Extension NON Autorisée</p>";
-                    return $oldImage;
+                    return $oldimage;
                 }
             } else {
                 $_SESSION['Message'] = "<p class='text-danger'>Taille Fichier > 5Mo</p>";
-                return $oldImage;
+                return $oldimage;
             }
         }
     }

@@ -14,7 +14,7 @@ class UserModel extends Database
             $db = new Database();
             $connexion = $db->getPDO();
             // Insérer l'utilisateur et le mot de passe hashé dans la base de données
-            $req = $connexion->prepare("INSERT INTO ms_users (Nom, Prénom, Email,Password, Rôle) VALUES (:nom, :prenom, :email, :password, :role)");
+            $req = $connexion->prepare("INSERT INTO ms_users (last_name, first_name, email,password, role) VALUES (:nom, :prenom, :email, :password, :role)");
             $req->bindParam(":nom", $nom, PDO::PARAM_STR);
             $req->bindParam(":prenom", $prenom, PDO::PARAM_STR);
             $req->bindParam(":email", $email, PDO::PARAM_STR);
@@ -31,7 +31,7 @@ class UserModel extends Database
         try {
             $db = new Database();
             $connexion = $db->getPDO();
-            $sql = "SELECT COUNT(*) as total FROM ms_users WHERE Email = :email";
+            $sql = "SELECT COUNT(*) as total FROM ms_users WHERE email = :email";
             $req = $connexion->prepare($sql);
             $req->bindParam(":email", $email, PDO::PARAM_STR);
             $req->execute();
@@ -48,7 +48,7 @@ class UserModel extends Database
         try {
             $db = new Database();
             $connexion = $db->getPDO();
-            $req = $connexion->prepare("SELECT * FROM ms_users WHERE Email = :email");
+            $req = $connexion->prepare("SELECT * FROM ms_users WHERE email = :email");
             $req->bindParam(":email", $email, PDO::PARAM_STR);
             $req->execute();
             $user = $req->fetch(PDO::FETCH_ASSOC);

@@ -6,15 +6,15 @@
         <input type="hidden" name="action" value="<?= $action ?>" />
         <div class="mb-3">
             <label class="form-label" for="titre">Titre :</label>
-            <input class="form-control" type="text" id="titre" name="titre" value="<?= isset($_SESSION['titre']) ? $_SESSION['titre'] : (isset($row['Titre']) ? $row['Titre']  : NULL)  ?>" required>
+            <input class="form-control" type="text" id="titre" name="titre" value="<?= isset($_SESSION['titre']) ? $_SESSION['titre'] : (isset($row['title']) ? $row['title']  : NULL)  ?>" required>
         </div>
         <div class="mb-3">
             <label class="form-label" for="contenu">Contenu :</label>
-            <textarea class="form-control" id="contenu" name="contenu" style="min-height:20vh;"><?= isset($_SESSION['contenu']) ? $_SESSION['contenu'] : (isset($row['Contenu']) ? $row['Contenu']  : NULL)  ?></textarea>
+            <textarea class="form-control" id="contenu" name="contenu" style="min-height:20vh;"><?= isset($_SESSION['contenu']) ? $_SESSION['contenu'] : (isset($row['content']) ? $row['content']  : NULL)  ?></textarea>
         </div>
         <div class="mb-3">
             <label class="form-label" for="prix">Prix :</label>
-            <input class="form-control" type="text" name="prix" value="<?= isset($_SESSION['prix']) ? $_SESSION['prix'] : (isset($row['Contenu']) ? $row['Prix']  : NULL)  ?>">
+            <input class="form-control" type="text" name="prix" value="<?= isset($_SESSION['prix']) ? $_SESSION['prix'] : (isset($row['content']) ? $row['price']  : NULL)  ?>">
         </div>
         <div class="mb-3">
             <!-- ANCHOR HIDDEN -->
@@ -24,14 +24,14 @@
         </div>
         <div class="mb-3">
             <!-- ANCHOR HIDDEN -->
-            <input type="hidden" name="old_image" value="<?= isset($row['Image']) ? $row['Image']  : NULL ?>">
+            <input type="hidden" name="old_image" value="<?= isset($row['image']) ? $row['image']  : NULL ?>">
 
             <label class="form-label" for="image">Ajouter une image :
-                <?php if (!empty($row['Image'])) : ?>
+                <?php if (!empty($row['image'])) : ?>
                     <div>
-                        <img src="<?= BROWSER_PATH . '/uploads/images/' .(isset($row['Image']) ? $row['Image']  : NULL) ?>" alt="<?= isset($_SESSION['titre']) ? $_SESSION['titre'] : (isset($row['Titre']) ? $row['Titre']  : NULL)  ?>" width="100px" />
+                        <img src="<?= BROWSER_PATH . '/uploads/images/' .(isset($row['image']) ? $row['image']  : NULL) ?>" alt="<?= isset($_SESSION['titre']) ? $_SESSION['titre'] : (isset($row['title']) ? $row['title']  : NULL)  ?>" width="100px" />
                     </div>
-                    <p> <strong>Image actuelle :</strong><?= $row['Image'] ?></p>
+                    <p> <strong>image actuelle :</strong><?= $row['image'] ?></p>
                 <?php endif ?>
             </label>
         </div>
