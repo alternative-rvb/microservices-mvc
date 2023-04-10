@@ -1,6 +1,5 @@
 <?php 
 
-
 define('LOCAL_SERVER', 'C:/laragon/www');
 define('PROJECT_FOLDER', '/microservices-mvc');
 define('ROOT_PATH', ($_SERVER['DOCUMENT_ROOT'] == LOCAL_SERVER) ? $_SERVER['DOCUMENT_ROOT'] . PROJECT_FOLDER : $_SERVER['DOCUMENT_ROOT']);

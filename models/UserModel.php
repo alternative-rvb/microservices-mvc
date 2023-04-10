@@ -2,7 +2,6 @@
 
 require_once 'Database.php';
 
-
 class UserModel extends Database
 {
     // ANCHOR Afficher l'en-tête de la table
@@ -58,3 +57,4 @@ class UserModel extends Database
             echo "Erreur: " . $e->getMessage();
         }
     }
+}
