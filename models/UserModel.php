@@ -58,15 +58,3 @@ class UserModel extends Database
             echo "Erreur: " . $e->getMessage();
         }
     }
-    // ANCHOR SECURITY
-
-    public function sanitizeInput($data)
-    {
-        // var_dump($data);
-        $data = $data ?? ""; // Si $data est null alors $data = ""
-        $data = trim($data);
-        $data = stripslashes($data);
-        $data = htmlspecialchars($data);
-        return $data;
-    }
-}

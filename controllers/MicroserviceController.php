@@ -58,7 +58,7 @@ class MicroserviceController
     public function handlePostFormSubmission()
     {
         // var_dump($_SESSION);
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $action = $_POST['action'];
             $id = $_SESSION['postID'] = $_POST['id'];
             if ($action != 'DELETE') {

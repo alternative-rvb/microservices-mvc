@@ -1,7 +1,8 @@
 <?php
 require_once 'db_config.php';
+require_once 'Utils.php';
 
-class Database
+class Database extends Utils
 {
     private $pdo;
 

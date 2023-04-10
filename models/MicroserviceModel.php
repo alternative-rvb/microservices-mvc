@@ -116,20 +116,20 @@ class MicroserviceModel extends Database
         try {
             $db = new Database();
             $connexion = $db->getPDO();
-            
+
             $sql = "UPDATE ms_posts SET title = :titre, content = :contenu, price = :prix, "
-                 . (!empty($image) ? "image = :image, " : "")
-                 . "user_id = :userID WHERE microservice_id = :id ";
-            
+                . (!empty($image) ? "image = :image, " : "")
+                . "user_id = :userID WHERE microservice_id = :id ";
+
             $req = $connexion->prepare($sql);
             $req->bindParam(':titre', $titre, PDO::PARAM_STR);
             $req->bindParam(':contenu', $contenu, PDO::PARAM_STR);
             $req->bindParam(':prix', $prix, PDO::PARAM_STR);
-            
+
             if (!empty($image)) {
                 $req->bindParam(':image', $image, PDO::PARAM_STR);
             }
-            
+
             $req->bindParam(':userID', $userID, PDO::PARAM_INT);
             $req->bindParam(':id', $id, PDO::PARAM_INT);
             $req->execute();
@@ -138,7 +138,7 @@ class MicroserviceModel extends Database
             echo "Erreur: " . $e->getMessage();
         }
     }
-    
+
 
 
     // ANCHOR DELETE Supprimer
@@ -163,9 +163,6 @@ class MicroserviceModel extends Database
     {
         if (isset($image) and $image['error'] == 0) {
 
-
-
-
             // Testons si le fichier n'est pas trop gros
             if ($image['size'] <= 5000000) {
 
@@ -183,11 +180,11 @@ class MicroserviceModel extends Database
                     // On peut valider le fichier et le stocker définitivement
 
                     $uniqueName = uniqid() . '.' . $extension_upload;
-                    move_uploaded_file($image['tmp_name'], ROOT_PATH.'/uploads/images/' . $uniqueName);
+                    move_uploaded_file($image['tmp_name'], ROOT_PATH . '/uploads/images/' . $uniqueName);
                     //  FIXME Attention la même image peut pas être téléversée 2 fois
                     // Vérifiez si l'ancienne image est définie et non vide
                     if (!empty($oldimage)) {
-                        $old_image_path = ROOT_PATH.'/uploads/images/' . $oldimage;
+                        $old_image_path = ROOT_PATH . '/uploads/images/' . $oldimage;
                         if (file_exists($old_image_path)) {
                             unlink($old_image_path);
                         }
@@ -203,18 +200,5 @@ class MicroserviceModel extends Database
                 return $oldimage;
             }
         }
-    }
-
-
-    // ANCHOR SECURITY
-
-    public function sanitizeInput($data)
-    {
-        // var_dump($data);
-        $data = $data ?? ""; // Si $data est null alors $data = ""
-        $data = trim($data);
-        $data = stripslashes($data);
-        $data = htmlspecialchars($data);
-        return $data;
     }
 }
